@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${application.followUpDate}</td>
         <td>${application.links}</td>
         <td class="actions">
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <button class="edit">Modifier</button>
+            <button class="delete">Supprimer</button>
         </td>
     `;
   }
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const actionsCell = row.querySelector(".actions");
       actionsCell.innerHTML = `
-        <button class="save">Save</button>
-        <button class="cancel">Cancel</button>
+        <button class="save">Sauvegarder</button>
+        <button class="cancel">Fermer</button>
       `;
     }
 
@@ -104,8 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const actionsCell = row.querySelector(".actions");
       actionsCell.innerHTML = `
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+        <button class="edit">Modifier</button>
+        <button class="delete">Supprimer</button>
       `;
 
       // Met à jour l'application modifiée dans le tableau et le localStorage
@@ -137,8 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const actionsCell = row.querySelector(".actions");
       actionsCell.innerHTML = `
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+        <button class="edit">Modifier</button>
+        <button class="delete">Supprimer</button>
       `;
     }
 
