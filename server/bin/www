@@ -1,7 +1,14 @@
 #!/bin/env node
-const app = require('../src/app')
+const { default: mongoose } = require('mongoose');
+const app = require('../src/app');
+const config = require('../src/helpers/config');
 
 const port = process.env.PORT;
-const server = app.listen(port, (err, _appName) => {
-  console.log(`listening on port ${port}.`);
-});
+
+;(async () => {
+  await mongoose.connect(config.MONGODB_URL);
+
+  const server = app.listen(port, (err, _appName) => {
+    console.log(`listening on port ${port}.`);
+  });
+})()

@@ -13,6 +13,22 @@ const router = createRouter({
       name: 'tracking-line',
       component: () => import('../views/TrackingLine.vue')
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue'),
+      props: {
+        isLogin: true
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/Login.vue'),
+      props: {
+        isLogin: false
+      }
+    },
   ]
 })
 

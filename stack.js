@@ -18,7 +18,8 @@ const stack = (stackMonitor) => {
           cwd: pathfs.resolve(__dirname, "server"),
           env: Object.assign({
             PORT: "4215",
-            mongoDbURL: `mongodb://root:123456@localhost:27017/dashboard?authSource=admin`,
+            MONGODB_URL: `mongodb://root:123456@localhost:27017/dashboard?authSource=admin`,
+            JWT_PRIVATE_KEY: 'this is a really good hidden key ;)',
           }),
         },
       },
@@ -36,8 +37,8 @@ const stack = (stackMonitor) => {
           }),
         },
       },
-    ]
-  }
+    ],
+  };
 }
 
 module.exports = stack;
