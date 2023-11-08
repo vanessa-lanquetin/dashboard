@@ -157,7 +157,6 @@ function reload() {
   const trackingLines = lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
   trackingLine.value = trackingLines.find(t => t.id === trackingLineId)
   toUpdate.value = new TrackingLine(trackingLine.value || {})
-  console.log(trackingLine)
 }
 onMounted(() => reload())
 
