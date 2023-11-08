@@ -5,6 +5,9 @@ import EnvironmentPlugin from 'vite-plugin-environment'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    outDir: path.resolve(__dirname, '..', 'server', 'public')
+  }, 
   plugins: [
     vue(),
     EnvironmentPlugin('all', { prefix: 'VUE_APP_' }),

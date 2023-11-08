@@ -177,7 +177,6 @@ function closeWithSave() {
   isEditMode.value = false
   const trackingLines = getTrackingLines()
   const index = trackingLines.findIndex(t => t.id === trackingLine.value?.id)
-  console.log(index)
   trackingLines?.splice(index, 1, toUpdate.value)
   localStorage.setItem("trackingLines", JSON.stringify(trackingLines));
   reload()

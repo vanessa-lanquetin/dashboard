@@ -73,11 +73,9 @@ const addModal = ref()
 onMounted(() => {
   const lsTrackingLines = localStorage.getItem("trackingLines");
   trackingLines.value = lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
-  console.log(trackingLines)
 })
 
 const addTrackingLine = async () => {
-  console.log(addModal.value.open)
   addModal.value.open().subscribe((res) => {
     if(!res) {
       toInsert.value = new TrackingLine({})
