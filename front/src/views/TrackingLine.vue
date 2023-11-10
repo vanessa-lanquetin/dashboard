@@ -327,4 +327,13 @@ h1, h2 {
   margin: 0;
   text-align: left;
 }
+
+
+@media (max-width: 980px){
+  .tracking-line-root{
+    .line{
+      flex-direction: column;
+    }
+  }
+}
 </style>
