@@ -1,7 +1,7 @@
 <template>
     <div class="form-root">
     <div class="header">
-      <h1>Tableau de bord de suivi de candidatures</h1>
+      <h1> test     Tableau de bord de suivi de candidatures</h1>
       <button class="buttonAdd" @click="addTrackingLine"><i class="fas fa-plus"></i></button>
     </div>
 
