@@ -1,8 +1,8 @@
 <template>
-  <div class="form-root">
+    <div class="form-root">
     <div class="header">
       <h1>Tableau de bord de suivi de candidatures</h1>
-      <button @click="addTrackingLine"><i class="fas fa-plus"></i></button>
+      <button class="buttonAdd" @click="addTrackingLine"><i class="fas fa-plus"></i></button>
     </div>
 
 
@@ -95,19 +95,28 @@ const deleteTrackingLine = async (id) => {
 </script>
 
 <style scoped lang="scss">
+h1{
+  color: #fff;
+}
+#logo{
+  align-self: center;
+  margin: 30px auto;
+  display: flex;
+}
 .form-root {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 1000px;
-    margin: auto;
+    margin: 80px auto;
     padding: 30px;
+
 }
 .table-container {
   width: 100%;
   margin: 20px 0;
-  background-color: #fff;
+  background-color: #ffffffa5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   overflow: auto;
@@ -118,6 +127,10 @@ const deleteTrackingLine = async (id) => {
   align-items: center;
   width: 100%;
   justify-content: space-between;
+  @media screen and (max-width:500px) {
+    flex-direction: column;
+    
+  }
 }
 
 </style>

@@ -18,7 +18,7 @@
     </td>
     <td class="actions">
       <button @click="$router.push({name: 'tracking-line', params: {trackingLineId: trackingLine.id}})"><i class="fas fa-eye"></i></button>
-      <button @click="$emit('deleteTrackingLine', trackingLine.id)"><i class="fas fa-trash"></i></button>
+      <button  @click="$emit('deleteTrackingLine', trackingLine.id)"><i class="fas fa-trash"></i></button>
     </td>
   </tr>
   </template>

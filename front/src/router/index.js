@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/Login.vue'),
+      component: () => import('../views/LoginView.vue'),
       props: {
         isLogin: true
       }
@@ -24,7 +24,7 @@ const router = createRouter({
     {
       path: '/register',
       name: 'register',
-      component: () => import('../views/Login.vue'),
+      component: () => import('../views/LoginView.vue'),
       props: {
         isLogin: false
       }

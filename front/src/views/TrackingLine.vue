@@ -7,13 +7,13 @@
         </button>
         Suivi de 
         <template v-if="!isEditMode">{{ trackingLine.enterpriseName }}</template>
-        <template v-else><input v-model="toUpdate.enterpriseName"></template>
+        <template v-else><input name="field"  v-model="toUpdate.enterpriseName"></template>
       </h1>
       <div class="actions">
         <button v-if="!isEditMode" @click="openEditMode"><i class="fas fa-edit"></i></button>
         <template v-if="isEditMode">
-          <button @click="closeWithSave"><i class="fas fa-save"></i></button>
-          <button @click="closeWithoutSave"><i class="fas fa-times"></i></button>
+          <button class="buttonSave" @click="closeWithSave"><i class="fas fa-save"></i></button>
+          <button class="buttonCross" @click="closeWithoutSave"><i class="fas fa-times"></i></button>
         </template>
       </div>
     </div>
@@ -26,7 +26,7 @@
               <div>Type :</div>
               <template v-if="!isEditMode">{{ getTranslation(trackingLine.type) }}</template>
               <template v-else>
-                <select id="application-type" v-model="toUpdate.type">
+                <select name="field"  id="application-type" v-model="toUpdate.type">
                   <option value="offer">Offre</option>
                   <option value="spontaneous-candidacy">Candidature spontanée</option>
                 </select>
@@ -35,17 +35,17 @@
             <li>
               <div>Date d'envoi de candidature :</div>
               <template v-if="!isEditMode">{{ date(trackingLine.submissionDate) }}</template>
-              <template v-else><input type="date" v-model="toUpdate.submissionDate"></template>
+              <template v-else><input  name="field" type="date" v-model="toUpdate.submissionDate"></template>
             </li>
             <li>
               <div>Nom du poste :</div>
               <template v-if="!isEditMode">{{ trackingLine.jobName }}</template>
-              <template v-else><input v-model="toUpdate.jobName"></template>
+              <template v-else><input  name="field" v-model="toUpdate.jobName"></template>
             </li>
             <li>
               <div>Date de relance :</div>
               <template v-if="!isEditMode">{{ date(trackingLine.relaunchDate) }}</template>
-              <template v-else><input type="date" v-model="toUpdate.relaunchDate"></template>
+              <template v-else><input  name="field" type="date" v-model="toUpdate.relaunchDate"></template>
             </li>
           </ul>
         </section>
@@ -64,14 +64,14 @@
           </template>
           <template v-else>
             <div v-for="(link, i) of toUpdate.links" :key="`link-${i}`">
-              <select v-model="toUpdate.links[i].icon">
+              <select name="field"  v-elsev-model="toUpdate.links[i].icon">
                 <option value="globe">Lien</option>
                 <option value="linkedin">Linkedin</option>
                 <option value="github">Github</option>
               </select>
-              <input type="text" placeholder="link..." v-model="toUpdate.links[i].link">
-              <input type="text" placeholder="name..." v-model="toUpdate.links[i].name">
-              <button @click="toUpdate.links.splice(i, 1)"><i class="fas fa-times" ></i></button>
+              <input  name="field" type="text" placeholder="link..." v-model="toUpdate.links[i].link">
+              <input  name="field" type="text" placeholder="name..." v-model="toUpdate.links[i].name">
+              <button class="buttonCross" @click="toUpdate.links.splice(i, 1)"><i class="fas fa-times" ></i></button>
             </div>
           </template>
         </section>
@@ -94,23 +94,23 @@
             <ul class="contact-container" v-for="(contact, i) of toUpdate.contacts" :key="`contacts-${i}`">
               <li>
                 <div>Nom :</div>
-                <input type="text" placeholder="Nom..." v-model="toUpdate.contacts[i].name">
+                <input name="field" type="text" placeholder="Nom..." v-model="toUpdate.contacts[i].name">
               </li>
               <li>
                 <div>Email :</div>
-                <input type="text" placeholder="Email..." v-model="toUpdate.contacts[i].email">
+                <input name="field" type="text" placeholder="Email..." v-model="toUpdate.contacts[i].email">
               </li>
               <li>
                 <div>Telephones :</div>
                 <ul class="contact-container" v-for="(phone, j) of toUpdate.contacts[i].phones" :key="`phone-${j}`">
                   <li class="line">
-                    <input type="text" placeholder="Numéro..." v-model="toUpdate.contacts[i].phones[j]">
-                    <button @click="toUpdate.contacts[i].phones.splice(j, 1)"><i class="fas fa-times" ></i></button>
+                    <input name="field" type="text" placeholder="Numéro..." v-model="toUpdate.contacts[i].phones[j]">
+                    <button class="buttonCross" @click="toUpdate.contacts[i].phones.splice(j, 1)"><i class="fas fa-times" ></i></button>
                   </li>
                 </ul>
                 <button @click="toUpdate.contacts[i].phones.push('')"><i class="fas fa-plus" ></i></button>
               </li>
-              <button @click="toUpdate.contacts.splice(i, 1)"><i class="fas fa-times" ></i></button>
+              <button class="buttonCross" @click="toUpdate.contacts.splice(i, 1)"><i class="fas fa-times" ></i></button>
             </ul>
           </template>
         </section>
@@ -129,7 +129,7 @@
               </div>
             </div>
           </div>
-          <template v-else><textarea ref="textAreaRef" v-model="toUpdate.infos" @input="input"></textarea></template>
+          <template v-else><textarea name="field"  ref="textAreaRef" v-model="toUpdate.infos" @input="input"></textarea></template>
         </section>
       </div>
     </div>
@@ -225,10 +225,12 @@ function icon(key) {
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      margin-bottom: 10px;
       h1 {
         display: flex;
         align-items: center;
-
+        color: #fff;
+        width: 100%;
       }
     }
     section {
@@ -290,8 +292,13 @@ function icon(key) {
 }
 .back {
   background-color: transparent;
-  color: #555;
+  color: #fff;
   font-size: 20px;
+  &:hover{
+    font-size: 28px;
+    color: #007BFF;
+    transition: 300ms;
+  }
 }
 ul {
   padding: 0;
