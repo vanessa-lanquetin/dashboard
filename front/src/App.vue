@@ -1,7 +1,9 @@
 <template>
   <header class="navBar">
     <!-- Logo -->
-    <img id="logo" src="../src/assets/logo-white.png" alt="logo" />
+    <router-link :to="{ name: 'home' }">
+      <img id="logo" src="../src/assets/logo-white.png" alt="logo" />
+    </router-link>
 
     <!-- Éléments de navigation -->
     <div class="nav--items" :class="{ 'nav--items-open': isMenuOpen }">
@@ -101,12 +103,14 @@ onMounted(async () => {
     justify-content: space-around;
     align-items: center;
     padding-right: 20px;
+    box-sizing: border-box;
 
     /* Styles pour l'effet de survol sur les éléments de navigation */
     .nav-item:hover {
       cursor: pointer;
+      color: #e59c3e;
       transition: border-bottom 300ms ease-in-out;
-      border-bottom: #fff 1px solid;
+      border-bottom: #e59c3e 1px solid;
     }
   }
 
@@ -128,7 +132,7 @@ onMounted(async () => {
 
   /* Media query pour la responsivité */
   @media (max-width: 980px) {
-    .nav-item:hover{
+    .nav-item:hover {
       border-bottom: none !important;
       transition: 300ms ease-in-out;
       text-decoration: underline;
@@ -141,6 +145,7 @@ onMounted(async () => {
       padding-right: 0;
       width: 100%;
       position: absolute;
+      gap: 0px;
       top: 70px;
       right: 0;
       background-color: #0b6668;
@@ -156,7 +161,8 @@ onMounted(async () => {
       .nav-item {
         padding: 10px;
         width: 100%;
-        text-align: right;
+        text-align: left;
+        box-sizing: border-box;
       }
     }
 

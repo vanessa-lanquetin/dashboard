@@ -59,7 +59,13 @@ async function send() {
 
 <style lang="scss" scoped>
 .body {
-  color: #fff;
+  color: #fff;font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url(../assets/bg-login.jpg);
+  background-size: cover;
+  background-position: center;
 
   .container-form {
     display: flex;
@@ -93,19 +99,18 @@ async function send() {
       }
     }
     button{
-      background-color: #8685856f;
+      background-color: #0b6668;
       color: #fff;
-      border: #fff solid 1px;
       font-size: 1rem;
       font-weight: 100;
       &:hover{
         transition: background-color  300ms ease-in-out;
-        background-color: #007BFF;
+        background-color: #e59c3e;
         border: none;
       }
     }
     a{
-      color:#007BFF;
+      color: #e59c3e;
       font-weight: 800;
       font-size: 0.9rem;
     }

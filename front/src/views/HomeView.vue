@@ -96,7 +96,7 @@ const deleteTrackingLine = async (id) => {
 
 <style scoped lang="scss">
 h1{
-  color: #fff;
+  color: #000;
 }
 #logo{
   align-self: center;

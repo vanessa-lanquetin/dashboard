@@ -64,7 +64,7 @@
           </template>
           <template v-else>
             <div v-for="(link, i) of toUpdate.links" :key="`link-${i}`">
-              <select name="field"  v-elsev-model="toUpdate.links[i].icon">
+              <select name="field" v-model="toUpdate.links[i].icon">
                 <option value="globe">Lien</option>
                 <option value="linkedin">Linkedin</option>
                 <option value="github">Github</option>
@@ -229,7 +229,7 @@ function icon(key) {
       h1 {
         display: flex;
         align-items: center;
-        color: #fff;
+        color: #000;
         width: 100%;
       }
     }
@@ -246,6 +246,10 @@ function icon(key) {
       display: flex;
       align-items: center;
       gap: 10px;
+      a{
+        color: #000;
+        text-transform: uppercase;
+      }
     }
     .contact-container {
       display: flex;
@@ -265,6 +269,9 @@ function icon(key) {
     .line {
       display: flex;
       gap: 10px;
+      h2{
+        color: #e59c3e;
+      }
     }
 
     .column {
@@ -292,11 +299,11 @@ function icon(key) {
 }
 .back {
   background-color: transparent;
-  color: #fff;
+  color: #000;
   font-size: 20px;
   &:hover{
     font-size: 28px;
-    color: #007BFF;
+    color: #0b6668;
     transition: 300ms;
   }
 }
