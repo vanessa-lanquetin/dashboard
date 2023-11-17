@@ -77,7 +77,7 @@
         </section>
         <section>
           <h2>Contact
-            <button v-if="isEditMode" @click="toUpdate.contacts.push(new Contact({}))">
+            <button v-if="isEditMode" @click="addContact">
               <i class="fas fa-plus" ></i>
             </button>
           </h2>
@@ -157,6 +157,10 @@ function reload() {
   const trackingLines = lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
   trackingLine.value = trackingLines.find(t => t.id === trackingLineId)
   toUpdate.value = new TrackingLine(trackingLine.value || {})
+}
+
+function addContact() {
+  toUpdate.value.contacts.push(new Contact({}))
 }
 onMounted(() => reload())
 
