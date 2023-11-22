@@ -101,7 +101,7 @@
                 <input name="field" type="text" placeholder="Email..." v-model="toUpdate.contacts[i].email">
               </li>
               <li>
-                <div>Telephones :</div>
+                <div>Téléphone :</div>
                 <ul class="contact-container" v-for="(phone, j) of toUpdate.contacts[i].phones" :key="`phone-${j}`">
                   <li class="line">
                     <input name="field" type="text" placeholder="Numéro..." v-model="toUpdate.contacts[i].phones[j]">

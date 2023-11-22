@@ -39,7 +39,7 @@
             <input type="text" id="company-name" required v-model="toInsert.enterpriseName"/>
 
             <label for="application-date">Date d'envoi de candidature</label>
-            <input type="date" id="application-date" required v-model="toInsert.submissionDate" />
+            <input type="date" id="application-date" v-model="toInsert.submissionDate" />
 
             <label for="application-type">Type</label>
             <select id="application-type" v-model="toInsert.type">
@@ -77,21 +77,30 @@ onMounted(() => {
 
 const addTrackingLine = async () => {
   addModal.value.open().subscribe((res) => {
-    if(!res) {
-      toInsert.value = new TrackingLine({})
-      return
+    if (!res) {
+      toInsert.value = new TrackingLine({});
+      return;
     } 
-    toInsert.value.id = uuid()
-    trackingLines.value.push(toInsert.value)
-    toInsert.value = new TrackingLine({})
+    
+    if (!toInsert.value.submissionDate) {
+      toInsert.value.submissionDate = null; // Mettre à null si le champ est vide
+    }
+
+    if (!toInsert.value.relaunchDate) {
+      toInsert.value.relaunchDate = null; // Mettre à null si le champ est vide
+    }
+    
+    toInsert.value.id = uuid();
+    trackingLines.value.push(toInsert.value);
+    toInsert.value = new TrackingLine({});
     localStorage.setItem("trackingLines", JSON.stringify(trackingLines.value));
-  })
-}
+  });
+};
 
 const deleteTrackingLine = async (id) => {
-  trackingLines.value = trackingLines.value?.filter(f => f.id !== id)
+  trackingLines.value = trackingLines.value?.filter(f => f.id !== id);
   localStorage.setItem("trackingLines", JSON.stringify(trackingLines.value));
-}
+};
 </script>
 
 <style scoped lang="scss">
