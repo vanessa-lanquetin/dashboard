@@ -10,6 +10,10 @@ const stack = (stackMonitor) => {
     services: [
       {
         label: "dashboard - Front",
+        git: {
+          home: "https://github.com/vanessa-lanquetin/dashboard",
+          remote: "git@github.com:vanessa-lanquetin/dashboard.git",
+        },
         spawnCmd: "npm",
         spawnArgs: ["run", "serve"],
         urls: ["http://localhost:3000"],
@@ -24,6 +28,10 @@ const stack = (stackMonitor) => {
       },
       {
         label: "dashboard - Serveur",
+        git: {
+          home: "https://github.com/vanessa-lanquetin/dashboard",
+          remote: "git@github.com:vanessa-lanquetin/dashboard.git",
+        },
         spawnCmd: "npm",
         spawnArgs: ["run", "serve"],
         urls: ["http://localhost:4215"],
