@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@iryu54/stack-monitor": "^1.11.18",
+    "@iryu54/stack-monitor": "^1.18.7",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1"
   }

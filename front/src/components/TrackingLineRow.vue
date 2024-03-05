@@ -20,7 +20,7 @@
       </td>
       <td class="actions">
         <!-- Bouton pour voir les détails de la ligne de suivi -->
-        <button @click="$router.push({ name: 'tracking-line', params: { trackingLineId: trackingLine.id } })"><i class="fas fa-eye"></i></button>
+        <button @click="$router.push({ name: 'tracking-line', params: { trackingLineId: trackingLine._id } })"><i class="fas fa-eye"></i></button>
         <!-- Bouton pour supprimer la ligne de suivi -->
         <button @click="$emit('deleteTrackingLine', trackingLine.id)"><i class="fas fa-trash"></i></button>
       </td>

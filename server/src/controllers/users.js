@@ -36,7 +36,7 @@ app.post("/login", async (req, res) => {
     } 
     return res.status(401).send("Wrong password");
   }
-  res.status(400).json("Compte déjà existant");
+  res.status(400).json("Compte inexistant");
 });
 
 module.exports = app;

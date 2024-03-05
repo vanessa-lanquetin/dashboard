@@ -21,9 +21,9 @@
         <tbody>
           <TrackingLineRow
             v-for="trackingLine of trackingLines"
-            :key="trackingLine.id"
+            :key="trackingLine._id"
             :trackingLine="trackingLine"
-            @delete-tracking-line="deleteTrackingLine"
+            @delete-tracking-line="deleteTrackingLine(trackingLine._id)"
           />
         </tbody>
       </table>
@@ -70,13 +70,14 @@ const toInsert = ref(new TrackingLine({}))
 /** @type {import('vue').Ref<TrackingLine[]>} */
 const trackingLines = ref([])
 const addModal = ref()
-onMounted(() => {
-  const lsTrackingLines = localStorage.getItem("trackingLines");
-  trackingLines.value = lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
-})
+
+const reload = async () => {
+  trackingLines.value = await TrackingLine.all();
+}
+onMounted(reload)
 
 const addTrackingLine = async () => {
-  addModal.value.open().subscribe((res) => {
+  addModal.value.open().subscribe(async (res) => {
     if (!res) {
       toInsert.value = new TrackingLine({});
       return;
@@ -89,17 +90,15 @@ const addTrackingLine = async () => {
     if (!toInsert.value.relaunchDate) {
       toInsert.value.relaunchDate = null; // Mettre à null si le champ est vide
     }
-    
-    toInsert.value.id = uuid();
-    trackingLines.value.push(toInsert.value);
+    await toInsert.value.save()
     toInsert.value = new TrackingLine({});
-    localStorage.setItem("trackingLines", JSON.stringify(trackingLines.value));
+    await reload()
   });
 };
 
 const deleteTrackingLine = async (id) => {
-  trackingLines.value = trackingLines.value?.filter(f => f.id !== id);
-  localStorage.setItem("trackingLines", JSON.stringify(trackingLines.value));
+  await TrackingLine.delete(id)
+  await reload()
 };
 </script>
 

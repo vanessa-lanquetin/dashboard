@@ -151,11 +151,8 @@ const trackingLine = ref()
 /** @type {import('vue').Ref<import ('../models/TrackingLine').default>} */
 const toUpdate = ref(new TrackingLine({}))
 
-function reload() {
-  const trackingLineId = route.params.trackingLineId 
-  const lsTrackingLines = localStorage.getItem("trackingLines");
-  const trackingLines = lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
-  trackingLine.value = trackingLines.find(t => t.id === trackingLineId)
+async function reload() {
+  trackingLine.value = await TrackingLine.get(route.params.trackingLineId);
   toUpdate.value = new TrackingLine(trackingLine.value || {})
 }
 
@@ -172,21 +169,14 @@ function openEditMode() {
   }, 50);
 }
 const isEditMode = ref(false)
-function getTrackingLines () {
-  const lsTrackingLines = localStorage.getItem("trackingLines");
-  return lsTrackingLines && lsTrackingLines !== 'undefined' ? JSON.parse(lsTrackingLines) : [];
-}
-function closeWithSave() {
+async function closeWithSave() {
   isEditMode.value = false
-  const trackingLines = getTrackingLines()
-  const index = trackingLines.findIndex(t => t.id === trackingLine.value?.id)
-  trackingLines?.splice(index, 1, toUpdate.value)
-  localStorage.setItem("trackingLines", JSON.stringify(trackingLines));
-  reload()
+  await toUpdate.value.save()
+  await reload()
 }
 
-function closeWithoutSave() {
-  toUpdate.value = new TrackingLine(trackingLine.value || {})
+async function closeWithoutSave() {
+  await reload()
   isEditMode.value = false
 }
 

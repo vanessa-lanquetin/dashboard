@@ -9,21 +9,6 @@ const stack = (stackMonitor) => {
   return {
     services: [
       {
-        label: "dashboard - Serveur",
-        spawnCmd: "npm",
-        spawnArgs: ["run", "serve"],
-        urls: ["http://localhost:4215"],
-        rootPath: pathfs.resolve(__dirname),
-        spawnOptions: {
-          cwd: pathfs.resolve(__dirname, "server"),
-          env: Object.assign({
-            PORT: "4215",
-            MONGODB_URL: `mongodb://root:123456@localhost:27017/dashboard?authSource=admin`,
-            JWT_PRIVATE_KEY: 'this is a really good hidden key ;)',
-          }),
-        },
-      },
-      {
         label: "dashboard - Front",
         spawnCmd: "npm",
         spawnArgs: ["run", "serve"],
@@ -34,6 +19,26 @@ const stack = (stackMonitor) => {
           env: Object.assign({
             VITE_APP_SERVER_URL: "http://localhost:4215",
             VITE_APP_VERSION: "v0.0.0",
+          }),
+        },
+      },
+      {
+        label: "dashboard - Serveur",
+        spawnCmd: "npm",
+        spawnArgs: ["run", "serve"],
+        urls: ["http://localhost:4215"],
+        rootPath: pathfs.resolve(__dirname),
+        logParsers: [
+          stackMonitor.parsers.links,
+          stackMonitor.parsers.jsons,
+          stackMonitor.parsers.debug,
+        ],
+        spawnOptions: {
+          cwd: pathfs.resolve(__dirname, "server"),
+          env: Object.assign({
+            PORT: "4215",
+            MONGODB_URL: `mongodb://root:123456@localhost:27017/dashboard?authSource=admin`,
+            JWT_PRIVATE_KEY: "this is a really good hidden key ;)",
           }),
         },
       },
